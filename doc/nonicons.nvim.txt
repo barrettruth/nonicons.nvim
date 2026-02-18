@@ -7,7 +7,7 @@ License: MIT
 INTRODUCTION                                                   *nonicons.nvim*
 
 nonicons.nvim replaces nvim-web-devicons glyphs with icons from the nonicons
-font (https://github.com/yamatsum/nonicons). It wraps devicons functions so
+font (https://github.com/ya2s/nonicons). It wraps devicons functions so
 that any plugin using nvim-web-devicons automatically displays nonicons glyphs.
 
 ==============================================================================
@@ -164,7 +164,7 @@ FONT SETUP                                                    *nonicons-font*
 
 The nonicons font must be installed and configured in your terminal emulator.
 
-Download the font from: https://github.com/yamatsum/nonicons/releases
+Download the font from: https://github.com/ya2s/nonicons/releases
 
 ghostty ~
 >
@@ -200,7 +200,7 @@ Run `:checkhealth nonicons` to verify:
 ==============================================================================
 ACKNOWLEDGEMENTS                                    *nonicons-acknowledgements*
 
-- yamatsum/nonicons (https://github.com/yamatsum/nonicons) — icon font
+- ya2s/nonicons (https://github.com/ya2s/nonicons) — icon font
 - ya2s/nvim-nonicons (https://github.com/ya2s/nvim-nonicons) — original plugin
 
 ==============================================================================
