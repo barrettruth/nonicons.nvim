@@ -96,20 +96,17 @@ jobs:
       - name: Check mapping against upstream
         run: |
           curl -sL https://raw.githubusercontent.com/ya2s/nonicons/main/src/template/nonicon.json \
-            | jq -S 'to_entries | map({key: (.key | sub("-16$"; "")), value: .value}) | from_entries' \
-            > /tmp/upstream.json
+            | jq -r 'to_entries[] | "\(.key | sub("-16$"; "")) \(.value)"' \
+            | sort > /tmp/upstream.txt
 
-          {
-            echo '---@type table<string, integer>'
-            echo 'local M = {'
-            jq -r 'to_entries | sort_by(.key) | .[] | "  ['"'"'\(.key)'"'"'] = \(.value),"' /tmp/upstream.json
-            echo '}'
-            echo 'return M'
-          } > /tmp/expected.lua
+          grep -oP "^\s*\['\K[^']+(?='\]\s*=\s*\d)" lua/nonicons/mapping.lua \
+            | while read -r key; do
+                val=$(grep -oP "^\s*\['${key}'\]\s*=\s*\K\d+" lua/nonicons/mapping.lua)
+                echo "$key $val"
+              done | sort > /tmp/local.txt
 
-          if ! diff -u lua/nonicons/mapping.lua /tmp/expected.lua; then
+          if ! diff -u /tmp/local.txt /tmp/upstream.txt; then
             echo ''
             echo '::warning::mapping.lua is out of sync with ya2s/nonicons upstream'
-            echo 'Run the sync script or update lua/nonicons/mapping.lua manually.'
             exit 1
           fi
