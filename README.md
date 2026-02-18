@@ -6,7 +6,8 @@
 
 ## Features
 
-- Replaces [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) glyphs with nonicons font icons
+- Replaces [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+  glyphs with nonicons font icons
 - Any plugin using nvim-web-devicons works automatically
 
 ## Requirements
