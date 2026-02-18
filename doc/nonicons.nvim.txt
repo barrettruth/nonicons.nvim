@@ -23,6 +23,7 @@ Load nvim-web-devicons before nonicons.nvim. For example, with lazy.nvim: >lua
     {
       'barrettruth/nonicons.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
+      lazy = false,
     }
 <
 The plugin works automatically with no configuration required. For
