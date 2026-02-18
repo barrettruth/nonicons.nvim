@@ -19,14 +19,14 @@ REQUIREMENTS                                          *nonicons-requirements*
 ==============================================================================
 SETUP                                                        *nonicons-setup*
 
-Using lazy.nvim: >lua
+Load nvim-web-devicons before nonicons.nvim. For example, with lazy.nvim: >lua
     {
       'barrettruth/nonicons.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
     }
 <
-The plugin applies overrides automatically via `plugin/nonicons.lua`. No
-`setup()` call is needed.
+The plugin works automatically with no configuration required. For
+customization, see |nonicons-config|.
 
 ==============================================================================
 CONFIGURATION                                               *nonicons-config*
@@ -65,6 +65,10 @@ API                                                            *nonicons-api*
 
 ==============================================================================
 RECIPES                                                    *nonicons-recipes*
+
+Plugins that call nvim-web-devicons functions (oil.nvim, telescope.nvim,
+fzf-lua, etc.) pick up nonicons glyphs automatically. The recipes below are
+for plugins that accept icon configuration directly.
 
 lualine ~
 >lua
@@ -127,13 +131,24 @@ oil.nvim ~
     tables directly, which nonicons.nvim mutates on load.
 
 fzf-lua ~
-
-    No configuration needed. fzf-lua calls `get_icon()` from devicons, which
-    nonicons.nvim wraps automatically.
+>lua
+    require('fzf-lua').setup({
+      file_icon_padding = ' ',
+    })
+<
 
 telescope.nvim ~
+>lua
+    local get = require('nonicons').get
 
-    No configuration needed. telescope.nvim calls `get_icon()` from devicons.
+    require('telescope').setup({
+      defaults = {
+        prompt_prefix = '  ' .. get('telescope') .. '  ',
+        selection_caret = ' > ',
+        entry_prefix = '   ',
+      },
+    })
+<
 
 nvim-tree ~
 >lua
