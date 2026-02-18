@@ -183,8 +183,7 @@ Download the font from: https://github.com/ya2s/nonicons/releases
 
 ghostty ~
 >
-    font-family = Nonicons
-    font-family = YourMainFont
+    font_codepoint_map = "U+f101-U+f25c=nonicons"
 <
 
 kitty ~
