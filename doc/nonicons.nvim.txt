@@ -23,6 +23,7 @@ Load nvim-web-devicons before nonicons.nvim. For example, with lazy.nvim: >lua
     {
       'barrettruth/nonicons.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
+      lazy = false,
     }
 <
 The plugin works automatically with no configuration required. For
@@ -183,8 +184,7 @@ Download the font from: https://github.com/ya2s/nonicons/releases
 
 ghostty ~
 >
-    font-family = Nonicons
-    font-family = YourMainFont
+    font_codepoint_map = "U+f101-U+f25c=nonicons"
 <
 
 kitty ~
