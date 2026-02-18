@@ -87,3 +87,29 @@ jobs:
         run: pnpm add -g prettier@3.1.0
       - name: Check markdown formatting with prettier
         run: prettier --check .
+
+  mapping-sync:
+    name: Mapping Sync Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check mapping against upstream
+        run: |
+          curl -sL https://raw.githubusercontent.com/ya2s/nonicons/main/src/template/nonicon.json \
+            | jq -S 'to_entries | map({key: (.key | sub("-16$"; "")), value: .value}) | from_entries' \
+            > /tmp/upstream.json
+
+          {
+            echo '---@type table<string, integer>'
+            echo 'local M = {'
+            jq -r 'to_entries | sort_by(.key) | .[] | "  ['"'"'\(.key)'"'"'] = \(.value),"' /tmp/upstream.json
+            echo '}'
+            echo 'return M'
+          } > /tmp/expected.lua
+
+          if ! diff -u lua/nonicons/mapping.lua /tmp/expected.lua; then
+            echo ''
+            echo '::warning::mapping.lua is out of sync with ya2s/nonicons upstream'
+            echo 'Run the sync script or update lua/nonicons/mapping.lua manually.'
+            exit 1
+          fi
