@@ -1,0 +1,60 @@
+name: sync
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-mapping:
+    name: Sync Upstream Mapping
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate mapping from upstream
+        run: |
+          curl -sL https://raw.githubusercontent.com/ya2s/nonicons/main/src/template/nonicon.json \
+            | jq -r 'to_entries | sort_by(.key) | .[] | "\(.key | sub("-16$"; "")) \(.value)"' \
+            > /tmp/upstream.txt
+
+          {
+            echo '---@type table<string, integer>'
+            echo 'local M = {'
+            while IFS=' ' read -r name code; do
+              printf "  ['%s'] = %s,\n" "$name" "$code"
+            done < /tmp/upstream.txt
+            echo '}'
+            echo 'return M'
+          } > lua/nonicons/mapping.lua
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet lua/nonicons/mapping.lua; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: sync/upstream-mapping
+          title: 'fix(mapping): sync with upstream nonicons font'
+          body: |
+            ## Problem
+
+            `mapping.lua` is out of sync with the [ya2s/nonicons](https://github.com/ya2s/nonicons) upstream font.
+
+            ## Solution
+
+            Auto-generated `mapping.lua` from upstream `nonicon.json`.
+          commit-message: 'fix(mapping): sync with upstream nonicons font'
+          labels: upstream-sync
+          delete-branch: true
