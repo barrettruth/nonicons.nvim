@@ -1,0 +1,207 @@
+*nonicons.nvim.txt*                                    Nonicons for Neovim
+
+Author:  Barrett Ruth <br.barrettruth@gmail.com>
+License: MIT
+
+==============================================================================
+INTRODUCTION                                                   *nonicons.nvim*
+
+nonicons.nvim replaces nvim-web-devicons glyphs with icons from the nonicons
+font (https://github.com/yamatsum/nonicons). It wraps devicons functions so
+that any plugin using nvim-web-devicons automatically displays nonicons glyphs.
+
+==============================================================================
+REQUIREMENTS                                          *nonicons-requirements*
+
+- nvim-web-devicons (https://github.com/nvim-tree/nvim-web-devicons)
+- nonicons font installed in your terminal
+
+==============================================================================
+SETUP                                                        *nonicons-setup*
+
+Using lazy.nvim: >lua
+    {
+      'barrettruth/nonicons.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+    }
+<
+The plugin applies overrides automatically via `plugin/nonicons.lua`. No
+`setup()` call is needed.
+
+==============================================================================
+CONFIGURATION                                               *nonicons-config*
+
+Configure via `vim.g.nonicons` before the plugin loads: >lua
+    vim.g.nonicons = {
+      override = true,
+    }
+<
+                                                    *nonicons.config.override*
+override ~
+    `boolean` (default: `true`)
+    Whether to wrap nvim-web-devicons functions with nonicons glyphs.
+
+==============================================================================
+API                                                            *nonicons-api*
+
+                                                            *nonicons.get()*
+`require('nonicons').get(name)`
+    Returns the nonicons character for the given icon name, or `nil` if the
+    name is not in the mapping.
+
+    Parameters: ~
+        {name}  `string`  Icon name (e.g. `'lua'`, `'python'`, `'git-branch'`)
+
+    Returns: ~
+        `string?`  The single-character nonicons glyph
+
+                                                        *nonicons.mapping*
+`require('nonicons').mapping`
+    The raw `table<string, integer>` mapping icon names to Unicode codepoints.
+    Useful for advanced use cases where you need the codepoint directly: >lua
+        local code = require('nonicons').mapping['lua']
+        local icon = vim.fn.nr2char(code)
+<
+
+==============================================================================
+RECIPES                                                    *nonicons-recipes*
+
+lualine ~
+>lua
+    local get = require('nonicons').get
+
+    require('lualine').setup({
+      sections = {
+        lualine_a = {
+          {
+            'mode',
+            fmt = function(mode)
+              local map = {
+                NORMAL = get('vim-normal-mode'),
+                INSERT = get('vim-insert-mode'),
+                VISUAL = get('vim-visual-mode'),
+                ['V-LINE'] = get('vim-visual-mode'),
+                ['V-BLOCK'] = get('vim-visual-mode'),
+                REPLACE = get('vim-replace-mode'),
+                COMMAND = get('vim-command-mode'),
+                SELECT = get('vim-select-mode'),
+                TERMINAL = get('vim-terminal-mode'),
+              }
+              return map[mode] or mode
+            end,
+          },
+        },
+      },
+    })
+<
+
+nvim-notify ~
+>lua
+    require('notify').setup({
+      icons = {
+        ERROR = require('nonicons').get('x-circle'),
+        WARN = require('nonicons').get('alert'),
+        INFO = require('nonicons').get('info'),
+        DEBUG = require('nonicons').get('bug'),
+        TRACE = require('nonicons').get('play'),
+      },
+    })
+<
+
+mason.nvim ~
+>lua
+    require('mason').setup({
+      ui = {
+        icons = {
+          package_installed = require('nonicons').get('check'),
+          package_pending = require('nonicons').get('sync'),
+          package_uninstalled = require('nonicons').get('x'),
+        },
+      },
+    })
+<
+
+oil.nvim ~
+
+    No configuration needed. oil.nvim reads the devicons extension/filename
+    tables directly, which nonicons.nvim mutates on load.
+
+fzf-lua ~
+
+    No configuration needed. fzf-lua calls `get_icon()` from devicons, which
+    nonicons.nvim wraps automatically.
+
+telescope.nvim ~
+
+    No configuration needed. telescope.nvim calls `get_icon()` from devicons.
+
+nvim-tree ~
+>lua
+    local get = require('nonicons').get
+
+    require('nvim-tree').setup({
+      renderer = {
+        icons = {
+          glyphs = {
+            default = get('file'),
+            symlink = get('file-symlink-file'),
+            folder = {
+              default = get('file-directory-fill'),
+              open = get('file-directory-open-fill'),
+              symlink = get('file-submodule'),
+              empty = get('file-directory-outline'),
+              arrow_open = get('chevron-down'),
+              arrow_closed = get('chevron-right'),
+            },
+          },
+        },
+      },
+    })
+<
+
+==============================================================================
+FONT SETUP                                                    *nonicons-font*
+
+The nonicons font must be installed and configured in your terminal emulator.
+
+Download the font from: https://github.com/yamatsum/nonicons/releases
+
+ghostty ~
+>
+    font-family = Nonicons
+    font-family = YourMainFont
+<
+
+kitty ~
+>
+    symbol_map U+F101-U+F219 Nonicons
+<
+
+wezterm ~
+>lua
+    config.font = wezterm.font_with_fallback({
+      'YourMainFont',
+      'Nonicons',
+    })
+<
+
+iTerm2 ~
+
+    Preferences > Profiles > Text > Non-ASCII Font > select Nonicons
+
+==============================================================================
+HEALTH CHECK                                                *nonicons-health*
+
+Run `:checkhealth nonicons` to verify:
+- nvim-web-devicons is available
+- The nonicons font is installed (via `fc-list`)
+- The mapping table loaded successfully
+
+==============================================================================
+ACKNOWLEDGEMENTS                                    *nonicons-acknowledgements*
+
+- yamatsum/nonicons (https://github.com/yamatsum/nonicons) — icon font
+- ya2s/nvim-nonicons (https://github.com/ya2s/nvim-nonicons) — original plugin
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
