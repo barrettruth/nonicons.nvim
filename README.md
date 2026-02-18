@@ -2,13 +2,12 @@
 
 **[Nonicons](https://github.com/ya2s/nonicons) for Neovim**
 
-<!-- screenshot here -->
+<img width="1920" height="1200" alt="Image" src="https://github.com/user-attachments/assets/815ff7a3-fdfc-404b-bee9-bc5bd933db9a" />
 
 ## Features
 
-- Replaces nvim-web-devicons glyphs with nonicons font icons
+- Replaces [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) glyphs with nonicons font icons
 - Any plugin using nvim-web-devicons works automatically
-- No `setup()` call needed
 
 ## Requirements
 
