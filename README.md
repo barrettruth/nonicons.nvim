@@ -32,14 +32,9 @@ luarocks install nonicons.nvim
 
 ## FAQ
 
-**How do I install with lazy.nvim?**
+**How do I integrate with plugin \<X\>?**
 
-```lua
-{
-  'barrettruth/nonicons.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-}
-```
+See `:help nonicons-recipes`.
 
 ## Acknowledgements
 
