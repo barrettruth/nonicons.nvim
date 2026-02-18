@@ -6,7 +6,8 @@
 
 ## Features
 
-- Replaces [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) glyphs with nonicons font icons
+- Replaces [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+  glyphs with nonicons font icons
 - Any plugin using nvim-web-devicons works automatically
 
 ## Requirements
@@ -31,14 +32,9 @@ luarocks install nonicons.nvim
 
 ## FAQ
 
-**How do I install with lazy.nvim?**
+**How do I integrate with plugin \<X\>?**
 
-```lua
-{
-  'barrettruth/nonicons.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-}
-```
+See `:help nonicons-recipes`.
 
 ## Acknowledgements
 
