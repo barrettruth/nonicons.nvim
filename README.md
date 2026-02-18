@@ -32,7 +32,7 @@ luarocks install nonicons.nvim
 
 ## FAQ
 
-**How do I integrate with plugin \<X\>?**
+**How do I integrate with plugin `X`?**
 
 See `:help nonicons-recipes`.
 
