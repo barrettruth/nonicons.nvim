@@ -107,7 +107,6 @@ M.ext_map = {
   pm = 'perl',
 
   r = 'r',
-  r = 'r',
   rmd = 'r',
 
   scala = 'scala',
