@@ -233,6 +233,16 @@ iTerm2 ~
     Preferences > Profiles > Text > Non-ASCII Font > select Nonicons
 
 ==============================================================================
+COMMANDS                                                  *nonicons-commands*
+
+                                                           *:NoniconsHiTest*
+`:NoniconsHiTest`
+    Open a scratch buffer listing every icon in the nonicons font alongside
+    its name, Unicode codepoint, and which extensions / filenames / filetypes
+    map to it. Use this to visually verify that glyphs render correctly and
+    that resolution tables point to the intended icons.
+
+==============================================================================
 HEALTH CHECK                                                *nonicons-health*
 
 Run `:checkhealth nonicons` to verify:

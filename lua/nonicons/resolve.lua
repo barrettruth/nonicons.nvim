@@ -1,5 +1,6 @@
 local M = {}
 
+---@type table<string, string>
 M.ext_map = {
   lua = 'lua',
   luac = 'lua',
@@ -287,6 +288,7 @@ M.ext_map = {
   mojo = 'code',
 }
 
+---@type table<string, string>
 M.filename_map = {
   ['dockerfile'] = 'docker',
   ['containerfile'] = 'docker',
@@ -421,6 +423,7 @@ M.filename_map = {
   ['code_of_conduct.md'] = 'book',
 }
 
+---@type table<string, string>
 M.ft_map = {
   typescriptreact = 'react',
   javascriptreact = 'react',
@@ -434,6 +437,9 @@ M.ft_map = {
   latex = 'book',
 }
 
+---@param name string? Filename (e.g. `'init.lua'`)
+---@param ext string? File extension (e.g. `'lua'`)
+---@return string? icon_name
 function M.resolve_name(name, ext)
   if ext and M.ext_map[ext] then
     return M.ext_map[ext]
@@ -459,6 +465,8 @@ function M.resolve_name(name, ext)
   end
 end
 
+---@param ft string? Vim filetype
+---@return string? icon_name
 function M.resolve_filetype(ft)
   if not ft then
     return

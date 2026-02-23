@@ -1,6 +1,8 @@
 local mapping = require('nonicons.mapping')
 local resolve_mod = require('nonicons.resolve')
 
+---@param name string
+---@return string?
 local function char(name)
   local code = mapping[name]
   if code then
@@ -8,8 +10,12 @@ local function char(name)
   end
 end
 
+---@type string
 local fallback_icon
 
+---@param name string?
+---@param ext string?
+---@return string
 local function resolve(name, ext)
   local key = resolve_mod.resolve_name(name, ext)
   if key then
