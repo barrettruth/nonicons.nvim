@@ -19,7 +19,7 @@ local fallback_icon
 local function resolve(name, ext)
   local key = resolve_mod.resolve_name(name, ext)
   if key then
-    return char(key)
+    return char(key) or fallback_icon
   end
   return fallback_icon
 end
@@ -32,7 +32,7 @@ function M.apply()
     return
   end
 
-  fallback_icon = char('file')
+  fallback_icon = char('file') or ''
 
   local orig_get_icon = devicons.get_icon
   devicons.get_icon = function(name, ext, opts)
