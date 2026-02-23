@@ -106,7 +106,7 @@ M.ext_map = {
   pm = 'perl',
 
   r = 'r',
-  R = 'r',
+  r = 'r',
   rmd = 'r',
 
   scala = 'scala',
@@ -121,7 +121,7 @@ M.ext_map = {
   tf = 'terraform',
   tfvars = 'terraform',
 
-  Dockerfile = 'docker',
+  dockerfile = 'docker',
   dockerignore = 'docker',
 
   angular = 'angular',
@@ -443,9 +443,18 @@ function M.resolve_name(name, ext)
     if M.filename_map[lower] then
       return M.filename_map[lower]
     end
-    local dot_ext = lower:match('%.(.+)$')
-    if dot_ext and M.ext_map[dot_ext] then
-      return M.ext_map[dot_ext]
+    local last_ext = lower:match('%.([^%.]+)$')
+    if last_ext and M.ext_map[last_ext] then
+      return M.ext_map[last_ext]
+    end
+    local compound = lower:match('%.(.+)$')
+    if compound and compound ~= last_ext then
+      while compound do
+        if M.ext_map[compound] then
+          return M.ext_map[compound]
+        end
+        compound = compound:match('%.(.+)$')
+      end
     end
   end
 end

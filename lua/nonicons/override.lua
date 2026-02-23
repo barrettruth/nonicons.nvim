@@ -107,7 +107,7 @@ function M.apply()
   local function override_tables()
     local by_ext = devicons.get_icons_by_extension()
     for ext, data in pairs(by_ext) do
-      local name = resolve_mod.ext_map[ext]
+      local name = resolve_mod.ext_map[ext] or resolve_mod.ext_map[ext:lower()]
       if name then
         data.icon = char(name) or fallback_icon
       else
@@ -117,7 +117,7 @@ function M.apply()
 
     local by_filename = devicons.get_icons_by_filename()
     for fname, data in pairs(by_filename) do
-      local name = resolve_mod.filename_map[fname]
+      local name = resolve_mod.filename_map[fname] or resolve_mod.filename_map[fname:lower()]
       if name then
         data.icon = char(name) or fallback_icon
       else
