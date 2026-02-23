@@ -48,7 +48,8 @@ return function()
   lines[#lines + 1] = 'nonicons.nvim — icon reference'
   lines[#lines + 1] = string.rep('=', 72)
   lines[#lines + 1] = ''
-  lines[#lines + 1] = string.format('  %-4s  %-28s  %-7s  %s', 'ICON', 'NAME', 'CODE', 'MAPPED FROM')
+  lines[#lines + 1] =
+    string.format('  %-4s  %-28s  %-7s  %s', 'ICON', 'NAME', 'CODE', 'MAPPED FROM')
   lines[#lines + 1] = string.rep('-', 72)
 
   for _, name in ipairs(icon_names) do
@@ -70,7 +71,8 @@ return function()
     end
 
     local src_str = #sources > 0 and table.concat(sources, ', ') or ''
-    lines[#lines + 1] = string.format('  %s     %-28s  U+%04X  %s', char(name), name, mapping[name], src_str)
+    lines[#lines + 1] =
+      string.format('  %s     %-28s  U+%04X  %s', char(name), name, mapping[name], src_str)
   end
 
   lines[#lines + 1] = ''
