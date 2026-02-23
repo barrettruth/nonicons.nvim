@@ -40,4 +40,18 @@ function M.apply()
   end
 end
 
+function M.get_icon(name, ext)
+  local key = require('nonicons.resolve').resolve_name(name, ext)
+  if key then
+    return M.get(key)
+  end
+end
+
+function M.get_icon_by_filetype(ft)
+  local key = require('nonicons.resolve').resolve_filetype(ft)
+  if key then
+    return M.get(key)
+  end
+end
+
 return M

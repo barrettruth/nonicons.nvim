@@ -56,6 +56,33 @@ API                                                            *nonicons-api*
     Returns: ~
         `string?`  The single-character nonicons glyph
 
+                                                       *nonicons.get_icon()*
+`require('nonicons').get_icon(name, ext)`
+    Returns the nonicons character for a file, resolved by filename and/or
+    extension. Returns `nil` if no match is found (caller decides fallback).
+
+    Resolution order: exact extension → exact filename → extracted extension.
+
+    Parameters: ~
+        {name}  `string?`  Filename (e.g. `'init.lua'`, `'Makefile'`)
+        {ext}   `string?`  File extension (e.g. `'lua'`, `'py'`)
+
+    Returns: ~
+        `string?`  The single-character nonicons glyph
+
+                                              *nonicons.get_icon_by_filetype()*
+`require('nonicons').get_icon_by_filetype(ft)`
+    Returns the nonicons character for a vim filetype. Returns `nil` if no
+    match is found.
+
+    Resolution order: direct mapping key → extension table → filetype table.
+
+    Parameters: ~
+        {ft}  `string`  Vim filetype (e.g. `'python'`, `'typescriptreact'`)
+
+    Returns: ~
+        `string?`  The single-character nonicons glyph
+
                                                         *nonicons.mapping*
 `require('nonicons').mapping`
     The raw `table<string, integer>` mapping icon names to Unicode codepoints.
@@ -128,8 +155,9 @@ mason.nvim ~
 
 oil.nvim ~
 
-    No configuration needed. oil.nvim reads the devicons extension/filename
-    tables directly, which nonicons.nvim mutates on load.
+    No configuration needed. oil.nvim detects nonicons.nvim and uses it as a
+    direct icon provider. If devicons is also loaded, the devicons override
+    still applies to other plugins.
 
 fzf-lua ~
 >lua
