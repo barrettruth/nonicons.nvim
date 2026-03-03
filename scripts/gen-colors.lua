@@ -30,10 +30,10 @@ for name in pairs(colors) do
 end
 table.sort(names)
 
-io.write("---@type table<string, { [1]: string, [2]: integer }>\n")
-io.write("local M = {\n")
+io.write('---@type table<string, { [1]: string, [2]: integer }>\n')
+io.write('local M = {\n')
 for _, name in ipairs(names) do
   local c = colors[name]
   io.write(string.format("  ['%s'] = { '%s', %d },\n", name, c[1], c[2]))
 end
-io.write("}\n\nreturn M\n")
+io.write('}\n\nreturn M\n')
