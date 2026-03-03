@@ -52,6 +52,10 @@ return function()
     string.format('  %-4s  %-28s  %-7s  %s', 'ICON', 'NAME', 'CODE', 'MAPPED FROM')
   lines[#lines + 1] = string.rep('-', 72)
 
+  local highlights = require('nonicons.highlights')
+  local icon_line_start = #lines
+  local icon_glyphs = {} ---@type string[]
+
   for _, name in ipairs(icon_names) do
     local sources = {} ---@type string[]
     if ext_by_icon[name] then
@@ -70,9 +74,11 @@ return function()
       end
     end
 
+    local glyph = char(name)
     local src_str = #sources > 0 and table.concat(sources, ', ') or ''
     lines[#lines + 1] =
-      string.format('  %s     %-28s  U+%04X  %s', char(name), name, mapping[name], src_str)
+      string.format('  %s     %-28s  U+%04X  %s', glyph, name, mapping[name], src_str)
+    icon_glyphs[#icon_glyphs + 1] = glyph
   end
 
   lines[#lines + 1] = ''
@@ -80,6 +86,14 @@ return function()
 
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+  for i, name in ipairs(icon_names) do
+    local hl = highlights.get(name)
+    local col_start = 2
+    local col_end = col_start + #icon_glyphs[i]
+    vim.api.nvim_buf_add_highlight(buf, -1, hl, icon_line_start + i - 1, col_start, col_end)
+  end
+
   vim.bo[buf].modifiable = false
   vim.bo[buf].buftype = 'nofile'
   vim.bo[buf].bufhidden = 'wipe'

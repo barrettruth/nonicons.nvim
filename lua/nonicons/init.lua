@@ -29,15 +29,18 @@ M.mapping = require('nonicons.mapping')
 
 ---@param name string Icon name
 ---@return string? glyph
+---@return string? hl_group
 function M.get(name)
   local code = M.mapping[name]
   if code then
-    return vim.fn.nr2char(code)
+    local hl = require('nonicons.highlights').get(name)
+    return vim.fn.nr2char(code), hl
   end
 end
 
 function M.apply()
   ensure_initialized()
+  require('nonicons.highlights').setup()
   if config.override then
     require('nonicons.override').apply()
   end
@@ -46,6 +49,7 @@ end
 ---@param name string? Filename (e.g. `'init.lua'`)
 ---@param ext string? File extension (e.g. `'lua'`)
 ---@return string? glyph
+---@return string? hl_group
 function M.get_icon(name, ext)
   local key = require('nonicons.resolve').resolve_name(name, ext)
   if key then
@@ -55,6 +59,7 @@ end
 
 ---@param ft string Vim filetype
 ---@return string? glyph
+---@return string? hl_group
 function M.get_icon_by_filetype(ft)
   local key = require('nonicons.resolve').resolve_filetype(ft)
   if key then

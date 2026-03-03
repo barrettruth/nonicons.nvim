@@ -7,7 +7,7 @@ function M.check()
   if ok and devicons then
     vim.health.ok('nvim-web-devicons available')
   else
-    vim.health.error('nvim-web-devicons not found')
+    vim.health.info('nvim-web-devicons not found (using built-in highlights)')
   end
 
   local result = vim.fn.system({ 'fc-list', ':family=nonicons' })
