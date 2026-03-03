@@ -87,11 +87,14 @@ return function()
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
+  local ns = vim.api.nvim_create_namespace('nonicons_hitest')
   for i, name in ipairs(icon_names) do
-    local hl = highlights.get(name)
     local col_start = 2
     local col_end = col_start + #icon_glyphs[i]
-    vim.api.nvim_buf_add_highlight(buf, -1, hl, icon_line_start + i - 1, col_start, col_end)
+    vim.api.nvim_buf_set_extmark(buf, ns, icon_line_start + i - 1, col_start, {
+      end_col = col_end,
+      hl_group = highlights.get(name),
+    })
   end
 
   vim.bo[buf].modifiable = false
