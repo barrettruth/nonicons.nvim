@@ -29,9 +29,11 @@ function M.setup()
 end
 
 ---@param icon_name string
----@return string hl_group
+---@return string? hl_group
 function M.get(icon_name)
-  return to_hl_group(icon_name)
+  if colors[icon_name] then
+    return to_hl_group(icon_name)
+  end
 end
 
 return M

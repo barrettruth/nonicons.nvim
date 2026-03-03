@@ -32,10 +32,21 @@ jobs:
             echo 'return M'
           } > lua/nonicons/mapping.lua
 
+      - name: Generate colors from nvim-web-devicons
+        run: |
+          sudo apt-get install -y -qq lua5.4 > /dev/null
+
+          curl -sL https://raw.githubusercontent.com/nvim-tree/nvim-web-devicons/master/lua/nvim-web-devicons/default/icons_by_file_extension.lua \
+            -o /tmp/devicons_ext.lua
+          curl -sL https://raw.githubusercontent.com/nvim-tree/nvim-web-devicons/master/lua/nvim-web-devicons/default/icons_by_filename.lua \
+            -o /tmp/devicons_fname.lua
+
+          lua5.4 scripts/gen-colors.lua > lua/nonicons/colors.lua
+
       - name: Check for changes
         id: diff
         run: |
-          if git diff --quiet lua/nonicons/mapping.lua; then
+          if git diff --quiet lua/nonicons/mapping.lua lua/nonicons/colors.lua; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -45,16 +56,17 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: sync/upstream-mapping
-          title: 'fix(mapping): sync with upstream nonicons font'
+          branch: sync/upstream
+          title: 'fix: sync with upstream nonicons font and devicons colors'
           body: |
             ## Problem
 
-            `mapping.lua` is out of sync with the [ya2s/nonicons](https://github.com/ya2s/nonicons) upstream font.
+            `mapping.lua` or `colors.lua` is out of sync with upstream sources.
 
             ## Solution
 
-            Auto-generated `mapping.lua` from upstream `nonicon.json`.
-          commit-message: 'fix(mapping): sync with upstream nonicons font'
+            Auto-generated from upstream [ya2s/nonicons](https://github.com/ya2s/nonicons) `nonicon.json`
+            and [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) color definitions.
+          commit-message: 'fix: sync with upstream nonicons font and devicons colors'
           labels: upstream-sync
           delete-branch: true
