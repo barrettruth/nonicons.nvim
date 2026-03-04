@@ -67,6 +67,7 @@ jobs:
 
             Auto-generated from upstream [ya2s/nonicons](https://github.com/ya2s/nonicons) `nonicon.json`
             and [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) color definitions.
-          commit-message: 'fix: sync with upstream nonicons font and devicons colors'
+          commit-message:
+            'fix: sync with upstream nonicons font and devicons colors'
           labels: upstream-sync
           delete-branch: true
