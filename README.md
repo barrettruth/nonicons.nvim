@@ -13,7 +13,8 @@
 ## Requirements
 
 - [nonicons font](https://github.com/ya2s/nonicons/releases) installed
-- (Optionally) [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- (Optionally)
+  [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 
 ## Installation
 
