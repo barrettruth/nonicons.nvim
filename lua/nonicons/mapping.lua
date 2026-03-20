@@ -269,6 +269,7 @@ local M = {
   ['number'] = 61949,
   ['octoface'] = 61844,
   ['organization'] = 61845,
+  ['oxc'] = 62138,
   ['package'] = 61846,
   ['package-dependencies'] = 61847,
   ['package-dependents'] = 61848,
