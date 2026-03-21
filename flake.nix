@@ -32,6 +32,17 @@
             vimdoc-language-server.packages.${pkgs.system}.default
           ];
         };
+
+        ci = pkgs.mkShell {
+          packages = [
+            pkgs.prettier
+            pkgs.stylua
+            pkgs.neovim
+            pkgs.selene
+            pkgs.lua-language-server
+            vimdoc-language-server.packages.${pkgs.system}.default
+          ];
+        };
       });
     };
 }
