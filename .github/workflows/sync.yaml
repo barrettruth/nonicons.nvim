@@ -12,7 +12,7 @@ permissions:
 jobs:
   sync-mapping:
     name: Sync Upstream Mapping
-    runs-on: [self-hosted, linux, x64, netcup, general]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -32,16 +32,16 @@ jobs:
             echo 'return M'
           } > lua/nonicons/mapping.lua
 
-      - uses: cachix/install-nix-action@v31
-
       - name: Generate colors from nvim-web-devicons
         run: |
+          sudo apt-get install -y -qq lua5.4 > /dev/null
+
           curl -sL https://raw.githubusercontent.com/nvim-tree/nvim-web-devicons/master/lua/nvim-web-devicons/default/icons_by_file_extension.lua \
             -o /tmp/devicons_ext.lua
           curl -sL https://raw.githubusercontent.com/nvim-tree/nvim-web-devicons/master/lua/nvim-web-devicons/default/icons_by_filename.lua \
             -o /tmp/devicons_fname.lua
 
-          nix-shell -p lua5_4 --run "lua5.4 scripts/gen-colors.lua > lua/nonicons/colors.lua"
+          lua5.4 scripts/gen-colors.lua > lua/nonicons/colors.lua
 
       - name: Check for changes
         id: diff
