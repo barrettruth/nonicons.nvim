@@ -322,6 +322,9 @@ M.filename_map = {
   ['eslint.config.mjs'] = 'eslint',
   ['eslint.config.ts'] = 'eslint',
 
+  ['biome.json'] = 'biome',
+  ['biome.jsonc'] = 'biome',
+
   ['.prettierrc'] = 'prettier',
   ['.prettierignore'] = 'prettier',
   ['.prettierrc.js'] = 'prettier',
