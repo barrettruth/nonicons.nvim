@@ -1,0 +1,46 @@
+# nonicons.nvim
+
+> [!IMPORTANT]
+> This is a read-only mirror of <https://git.barrettruth.com/barrettruth/nonicons.nvim>. Use Forgejo for issues, PRs, and active development.
+
+**[Nonicons](https://github.com/ya2s/nonicons) for Neovim**
+
+<img width="1920" height="1200" alt="Image" src="https://github.com/user-attachments/assets/815ff7a3-fdfc-404b-bee9-bc5bd933db9a" />
+
+## Features
+
+- Replaces [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+  glyphs with nonicons font icons
+- Any plugin using nvim-web-devicons works automatically
+
+## Requirements
+
+- [nonicons font](https://github.com/ya2s/nonicons/releases) installed
+- (Optionally)
+  [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+
+## Installation
+
+Install with your package manager of choice or via
+[luarocks](https://luarocks.org/modules/barrettruth/nonicons.nvim):
+
+```
+luarocks install nonicons.nvim
+```
+
+## Documentation
+
+```vim
+:help nonicons.nvim
+```
+
+## FAQ
+
+**Q: How do I integrate with plugin `X`?**
+
+See `:help nonicons-recipes`.
+
+## Acknowledgements
+
+- [ya2s/nonicons](https://github.com/ya2s/nonicons) — icon font
+- [ya2s/nvim-nonicons](https://github.com/ya2s/nvim-nonicons) — original plugin
