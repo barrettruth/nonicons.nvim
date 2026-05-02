@@ -5,7 +5,7 @@
 
 **[Nonicons](https://github.com/ya2s/nonicons) for Neovim**
 
-<img width="1920" height="1200" alt="Image" src="https://github.com/user-attachments/assets/815ff7a3-fdfc-404b-bee9-bc5bd933db9a" />
+![nonicons.nvim preview](https://github.com/user-attachments/assets/815ff7a3-fdfc-404b-bee9-bc5bd933db9a)
 
 ## Features
 
