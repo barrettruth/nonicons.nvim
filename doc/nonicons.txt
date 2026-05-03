@@ -20,7 +20,7 @@ SETUP                                                         *nonicons-setup*
 
 Load nvim-web-devicons before nonicons.nvim. For example, with lazy.nvim: >lua
     {
-      'barrettruth/nonicons.nvim',
+      url = 'https://git.barrettruth.com/barrettruth/nonicons.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       lazy = false,
     }
