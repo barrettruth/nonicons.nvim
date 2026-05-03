@@ -18,8 +18,16 @@
 
 ## Installation
 
-Install with your package manager of choice or via
-[luarocks](https://luarocks.org/modules/barrettruth/nonicons.nvim):
+With `vim.pack` (Neovim 0.12+):
+
+```lua
+vim.pack.add({
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://git.barrettruth.com/barrettruth/nonicons.nvim',
+})
+```
+
+Or via [luarocks](https://luarocks.org/modules/barrettruth/nonicons.nvim):
 
 ```
 luarocks install nonicons.nvim

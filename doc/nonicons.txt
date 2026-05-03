@@ -18,14 +18,17 @@ REQUIREMENTS                                           *nonicons-requirements*
 ==============================================================================
 SETUP                                                         *nonicons-setup*
 
-Load nvim-web-devicons before nonicons.nvim. For example, with lazy.nvim: >lua
-    {
-      url = 'https://git.barrettruth.com/barrettruth/nonicons.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' },
-      lazy = false,
-    }
-< The plugin works automatically with no configuration required. For
-customization, see |nonicons-config|.
+With vim.pack (Neovim 0.12+): >lua
+    vim.pack.add({
+      'https://github.com/nvim-tree/nvim-web-devicons',
+      'https://git.barrettruth.com/barrettruth/nonicons.nvim',
+    })
+<
+With luarocks: >sh
+    luarocks install nonicons.nvim
+<
+Load nvim-web-devicons before nonicons.nvim. The plugin works automatically
+with no configuration required. For customization, see |nonicons-config|.
 
 ==============================================================================
 CONFIGURATION                                                *nonicons-config*
