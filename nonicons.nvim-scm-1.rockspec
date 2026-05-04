@@ -9,7 +9,7 @@ source = {
 description = {
   summary = 'Nonicons for Neovim',
   homepage = 'https://git.barrettruth.com/barrettruth/nonicons.nvim',
-  license = 'MIT',
+  license = 'GPL-3.0',
 }
 
 dependencies = {

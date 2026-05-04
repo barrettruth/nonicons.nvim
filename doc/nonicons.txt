@@ -1,6 +1,6 @@
 *nonicons.txt*                     *nonicons* *nonicons.nvim* Nonicons for Neovim
 
-Author:  Barrett Ruth <br.barrettruth@gmail.com> License: MIT
+Author:  Barrett Ruth <br@barrettruth.com> License: GPL-3.0
 
 ==============================================================================
 INTRODUCTION                                           *nonicons-introduction*
@@ -23,11 +23,9 @@ With vim.pack (Neovim 0.12+): >lua
       'https://github.com/nvim-tree/nvim-web-devicons',
       'https://git.barrettruth.com/barrettruth/nonicons.nvim',
     })
-<
-With luarocks: >sh
+< With luarocks: >sh
     luarocks install nonicons.nvim
-<
-Load nvim-web-devicons before nonicons.nvim. The plugin works automatically
+< Load nvim-web-devicons before nonicons.nvim. The plugin works automatically
 with no configuration required. For customization, see |nonicons-config|.
 
 ==============================================================================
