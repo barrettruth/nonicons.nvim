@@ -41,7 +41,7 @@ luarocks install nonicons.nvim
 ## Documentation
 
 ```vim
-:help nonicons.nvim
+:help nonicons
 ```
 
 ## FAQ
