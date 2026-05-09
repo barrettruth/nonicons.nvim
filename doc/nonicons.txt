@@ -29,6 +29,15 @@ With vim.pack (Neovim 0.12+): >lua
 with no configuration required. For customization, see |nonicons-config|.
 
 ==============================================================================
+FORGEJO                                                *nonicons.nvim-forgejo*
+
+Due to GitHub's historic unreliability, development, issues, and pull requests
+have moved to: >
+    https://git.barrettruth.com/barrettruth/nonicons.nvim
+<
+Use Forgejo for documentation, issues, pull requests, and active development.
+
+==============================================================================
 CONFIGURATION                                                *nonicons-config*
 
 Configure via `vim.g.nonicons` before the plugin loads: >lua
