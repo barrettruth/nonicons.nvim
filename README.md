@@ -4,7 +4,7 @@
 
 > [!NOTE]
 > Due to GitHub's historic unreliability, active development is hosted on
-> [Forgejo](https://git.barrettruth.com/barrettruth/nonicons.nvim).
+> [Forgejo](https://forge.barrettruth.com/barrettruth/nonicons.nvim).
 > GitHub is maintained as a read-only mirror.
 > See `:help nonicons.nvim-forgejo` for canonical project links.
 
@@ -29,7 +29,7 @@ With `vim.pack` (Neovim 0.12+):
 ```lua
 vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
-  'https://git.barrettruth.com/barrettruth/nonicons.nvim',
+  'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
 })
 ```
 

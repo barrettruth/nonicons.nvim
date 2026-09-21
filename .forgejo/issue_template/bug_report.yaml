@@ -9,7 +9,7 @@ body:
       options:
         - label:
             I have searched [existing
-            issues](https://git.barrettruth.com/barrettruth/nonicons.nvim/issues)
+            issues](https://forge.barrettruth.com/barrettruth/nonicons.nvim/issues)
           required: true
         - label: I have updated to the latest version
           required: true
@@ -66,7 +66,7 @@ body:
       value: |
         vim.pack.add({
           'https://github.com/nvim-tree/nvim-web-devicons',
-          'https://git.barrettruth.com/barrettruth/nonicons.nvim',
+          'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
         })
     validations:
       required: true

@@ -21,7 +21,7 @@ SETUP                                                         *nonicons-setup*
 With vim.pack (Neovim 0.12+): >lua
     vim.pack.add({
       'https://github.com/nvim-tree/nvim-web-devicons',
-      'https://git.barrettruth.com/barrettruth/nonicons.nvim',
+      'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
     })
 < With luarocks: >sh
     luarocks install nonicons.nvim
@@ -33,7 +33,7 @@ FORGEJO                                                *nonicons.nvim-forgejo*
 
 Due to GitHub's historic unreliability, development, issues, and pull requests
 have moved to: >
-    https://git.barrettruth.com/barrettruth/nonicons.nvim
+    https://forge.barrettruth.com/barrettruth/nonicons.nvim
 <
 Use Forgejo for documentation, issues, pull requests, and active development.
 

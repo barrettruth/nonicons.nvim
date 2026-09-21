@@ -3,12 +3,12 @@ package = 'nonicons.nvim'
 version = 'scm-1'
 
 source = {
-  url = 'git+https://git.barrettruth.com/barrettruth/nonicons.nvim.git',
+  url = 'git+https://forge.barrettruth.com/barrettruth/nonicons.nvim.git',
 }
 
 description = {
   summary = 'Nonicons for Neovim',
-  homepage = 'https://git.barrettruth.com/barrettruth/nonicons.nvim',
+  homepage = 'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
   license = 'GPL-3.0',
 }
 
