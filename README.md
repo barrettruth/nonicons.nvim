@@ -2,10 +2,6 @@
 
 **[Nonicons](https://github.com/ya2s/nonicons) for Neovim**
 
-> [!NOTE]
-> Active development is hosted on
-> [Forgejo](https://forge.barrettruth.com/barrettruth/nonicons.nvim).
-
 ![nonicons.nvim preview](assets/nonicons.webp)
 
 ## Features
