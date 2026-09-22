@@ -2,7 +2,7 @@
 
 **[Nonicons](https://github.com/ya2s/nonicons) for Neovim**
 
-![nonicons.nvim preview](assets/nonicons.webp)
+![nonicons.nvim preview](https://forge.barrettruth.com/attachments/15be8172-9a1a-4751-94fb-97bf6f8b4ba5)
 
 ## Features
 
