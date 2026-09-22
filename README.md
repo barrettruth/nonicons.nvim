@@ -31,12 +31,6 @@ vim.pack.add({
 })
 ```
 
-Or via [luarocks](https://luarocks.org/modules/barrettruth/nonicons.nvim):
-
-```
-luarocks install nonicons.nvim
-```
-
 ## Documentation
 
 ```vim
