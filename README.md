@@ -6,7 +6,7 @@
 > Active development is hosted on
 > [Forgejo](https://forge.barrettruth.com/barrettruth/nonicons.nvim).
 
-![nonicons.nvim preview](https://github.com/user-attachments/assets/815ff7a3-fdfc-404b-bee9-bc5bd933db9a)
+![nonicons.nvim preview](assets/nonicons.webp)
 
 ## Features
 
