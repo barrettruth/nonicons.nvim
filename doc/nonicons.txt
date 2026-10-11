@@ -27,16 +27,6 @@ With vim.pack (Neovim 0.12+): >lua
 with no configuration required. For customization, see |nonicons-config|.
 
 ==============================================================================
-MIGRATION                                                 *nonicons-migration*
-
-nonicons.nvim will be removed from GitHub on October 31, 2026. Update your
-plugin source to Forgejo: >lua
-    vim.pack.add({
-      'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
-    })
-<
-
-==============================================================================
 CONFIGURATION                                                *nonicons-config*
 
 Configure via `vim.g.nonicons` before the plugin loads: >lua
