@@ -21,7 +21,7 @@ SETUP                                                         *nonicons-setup*
 With vim.pack (Neovim 0.12+): >lua
     vim.pack.add({
       'https://github.com/nvim-tree/nvim-web-devicons',
-      'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
+      'https://github.com/barrettruth/nonicons.nvim',
     })
 < Load nvim-web-devicons before nonicons.nvim. The plugin works automatically
 with no configuration required. For customization, see |nonicons-config|.

@@ -1,7 +1,7 @@
 # Contributing
 
 Development, issues, and pull requests happen on
-[Forgejo](https://forge.barrettruth.com/barrettruth/nonicons.nvim).
+[GitHub](https://github.com/barrettruth/nonicons.nvim).
 
 ## Scope
 

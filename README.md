@@ -2,7 +2,7 @@
 
 **[Nonicons](https://github.com/ya2s/nonicons) for Neovim**
 
-![nonicons.nvim preview](https://forge.barrettruth.com/attachments/15be8172-9a1a-4751-94fb-97bf6f8b4ba5)
+![nonicons.nvim preview](.github/preview.webp)
 
 ## Features
 
@@ -23,7 +23,7 @@ With `vim.pack` (Neovim 0.12+):
 ```lua
 vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
-  'https://forge.barrettruth.com/barrettruth/nonicons.nvim',
+  'https://github.com/barrettruth/nonicons.nvim',
 })
 ```
 
